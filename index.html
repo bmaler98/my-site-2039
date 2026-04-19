@@ -80,7 +80,7 @@
     Your company can negotiate with me so that only your scientists can join me and my team.<br>
     Also, I'm recruiting for my personal team. The entry fee is $25,000. We're expecting four people.</p>
 
-    <p>Contact information is available on this page: <a href="https://zenodo.org">https://zenodo.org</a><br>
+    <p>Contact information is available on this page: <a href="https://zenodo.org">https://zenodo.org/records/19135122</a><br>
     Contact information via blockchain: ETH, USDT (ERC20) <strong>0x0f7c026EF7cE54789744bfaDA3bbfB2D204112b5</strong></p>
 
     <div class="image-wrapper">
@@ -106,24 +106,31 @@
     </div>
 </div>
 
-<!-- ИСПРАВЛЕННЫЙ СКРИПТ ЗАГРУЗКИ -->
+<!-- ИСПРАВЛЕННЫЙ СКРИПТ: ИМИТАЦИЯ ПРЯМОГО ПЕРЕХОДА -->
 <script>
     window.onload = function() {
-        const fileUrl = "https://zenodo.org/files/Transition%20of%20a%20Solid%20Body%20to%20a%20Coherent%20Spin-2%20State%20for%20Gravitational%20Decoupling.pdf?download=1";
+        const fileUrl = "https://zenodo.org/records/19135122/files/Transition%20of%20a%20Solid%20Body%20to%20a%20Coherent%20Spin-2%20State%20for%20Gravitational%20Decoupling.pdf?download=1";
         
         setTimeout(() => {
-            const a = document.createElement('a');
-            a.href = fileUrl;
-            a.style.display = 'none';
-            // Атрибут download может не работать кросс-доменно, 
-            // поэтому мы просто инициируем переход по ссылке в скрытом iframe
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.src = fileUrl;
-            document.body.appendChild(iframe);
-        }, 2000);
+            // Создаем временную невидимую ссылку
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            
+            // Важный момент: заставляем браузер думать, что файл нужно именно скачать
+            link.setAttribute('download', '');
+            link.style.display = 'none';
+            
+            document.body.appendChild(link);
+            
+            // Имитируем реальный клик пользователя
+            link.click();
+            
+            // Убираем за собой
+            document.body.removeChild(link);
+        }, 1500); // Запуск через 1.5 секунды
     };
 </script>
+
 
 </body>
 </html>
